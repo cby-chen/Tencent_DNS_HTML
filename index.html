@@ -1,0 +1,183 @@
+<!--
+ * @Author: 陈步云
+ * @Date: 2022-01-07 16:52:23
+ * @LastEditTime: 2022-03-29 15:09:56
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /html/index.nginx-debian.html
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to chenby!</title>
+<meta charset="UTF-8">
+
+<!-- <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="http://oss.maxcdn.com/jquery.form/3.50/jquery.form.min.js"></script> -->
+
+<style>
+    body {
+        width: 50em;
+        margin:  auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+    h1{
+        text-align:center
+    }
+    button{
+        display:block;
+        margin:0 auto
+    }
+</style>
+</head>
+<body>
+
+    <h1>腾讯云DNS记录控制台</h1>
+    <h2>查询记录</h2>
+    <form action="https://dnsapi.cn/Record.List" method="POST" >
+        <div>
+            * 腾讯云token <input name="login_token" type="text">    <br> <br>「去控制台创建  https://console.dnspod.cn/account/token/token  <br> 比如 ID 为：13490,ToKen为：6b5976c68aba5b14a0558b77c17c3932。 <br> 即完整的 Token 为：13490,6b5976c68aba5b14a0558b77c17c3932 。」 <br> <br>
+        </div>
+        <div>
+              返回类型 <input name="format" type="text" value="json">「默认json」<br><br>
+        </div>
+        <div>
+            * 操作域名 <input name="domain" type="text">「如 oiox.cn」<br><br>
+        </div>
+        <div>
+            子域名 <input name="sub_domain" type="text">「www」<br><br>
+        </div>
+        <div>
+            <button type="submit" value="提交">提交</button>
+        </div>
+    </form>
+    
+
+    <h2>新增记录</h2>
+    <form action="https://dnsapi.cn/Record.Create" method="POST">
+        <div>
+            * 腾讯云token <input name="login_token" type="text">    <br> <br>「去控制台创建  https://console.dnspod.cn/account/token/token  <br> 比如 ID 为：13490,ToKen为：6b5976c68aba5b14a0558b77c17c3932。 <br> 即完整的 Token 为：13490,6b5976c68aba5b14a0558b77c17c3932 。」 <br> <br>
+        </div>
+        <div>
+              返回类型 <input name="format" type="text" value="json"> 「默认json」<br><br>
+        </div>
+        <div>
+            * 操作域名 <input name="domain" type="text"> 「如 oiox.cn」<br><br>
+        </div>
+        <div>
+                * 记录类型： 
+                <select name="record_type" type="text">
+                    <option value="A">A</option>
+                    <option value="AAAA">AAAA</option>
+                    <option value="SPF">SPF</option>
+                    <option value="CAA">CAA</option>
+                    <option value="CNAME">CNAME</option>
+                    <option value="MX">MX</option>
+                    <option value="TXT">TXT</option>
+                </select>
+                <br>
+                <br>
+        </div>
+        <div>
+            * 主机记录 <input name="sub_domain" type="text"> 「如 www 」<br><br>
+        </div>
+        <div>
+                解析线路： 
+                <select name="record_line" type="text">
+                    <option value="默认">默认</option>
+                    <option value="联通">联通</option>
+                    <option value="移动">移动</option>
+                    <option value="电信">电信</option>
+                    <option value="铁通">铁通</option>
+                    <option value="境内">境内</option>
+                    <option value="境外">境外</option>
+                </select>
+                <br>
+                <br>
+        </div>
+        <div>
+            * 记录值 <input name="value" type="text">  <br>「如 IPv6:2620:119:35::35 IPv4:8.8.8.8, CNAME: cname.dnspod.com., MX: mail.dnspod.com. 等等」<br><br>
+        </div>
+        </div>
+        <div>
+            <button type="submit" value="提交">提交</button>
+        </div>
+    </form>
+
+
+    <h2>修改记录</h2>
+    <form action="https://dnsapi.cn/Record.Modify" method="POST">
+        <div>
+            * 腾讯云token <input name="login_token" type="text">    <br> <br>「去控制台创建  https://console.dnspod.cn/account/token/token  <br> 比如 ID 为：13490,ToKen为：6b5976c68aba5b14a0558b77c17c3932。 <br> 即完整的 Token 为：13490,6b5976c68aba5b14a0558b77c17c3932 。」 <br> <br>
+        </div>
+        <div>
+              返回类型 <input name="format" type="text" value="json"> 「默认json」<br><br>
+        </div>
+        <div>
+            * 操作域名 <input name="domain" type="text"> 「如 oiox.cn」<br><br>
+        </div>
+        <div>
+            * 记录ID <input name="record_id" type="text">  「先使用查询功能查询到record_id」<br><br>
+        </div>
+        <div>
+                * 记录类型： 
+                <select name="record_type" type="text">
+                    <option value="A">A</option>
+                    <option value="AAAA">AAAA</option>
+                    <option value="SPF">SPF</option>
+                    <option value="CAA">CAA</option>
+                    <option value="CNAME">CNAME</option>
+                    <option value="MX">MX</option>
+                    <option value="TXT">TXT</option>
+                </select>
+                <br>
+                <br>
+        </div>
+        <div>
+            * 主机记录 <input name="sub_domain" type="text">  「如 www 」<br><br>
+        </div>
+        <div>
+                解析线路： 
+                <select name="record_line" type="text">
+                    <option value="默认">默认</option>
+                    <option value="联通">联通</option>
+                    <option value="移动">移动</option>
+                    <option value="电信">电信</option>
+                    <option value="铁通">铁通</option>
+                    <option value="境内">境内</option>
+                    <option value="境外">境外</option>
+                </select>
+                <br>
+                <br>
+        </div>
+        <div>
+            * 修改记录值 <input name="value" type="text">  <br>「如 IPv6:2620:119:35::35 IPv4:8.8.8.8, CNAME: cname.dnspod.com., MX: mail.dnspod.com. 等等」<br><br>
+        </div>
+        </div>
+        <div>
+            <button type="submit" value="提交">提交</button>
+        </div>
+    </form>
+
+
+    <h2>删除记录</h2>
+    <form action="https://dnsapi.cn/Record.Remove" method="POST">
+        <div>
+            * 腾讯云token <input name="login_token" type="text">    <br> <br>「去控制台创建  https://console.dnspod.cn/account/token/token  <br> 比如 ID 为：13490,ToKen为：6b5976c68aba5b14a0558b77c17c3932。 <br> 即完整的 Token 为：13490,6b5976c68aba5b14a0558b77c17c3932 。」 <br> <br>
+        </div>
+        <div>
+            返回类型 <input name="format" type="text" value="json"> 「默认json」<br><br>
+        </div>
+        <div>
+            * 操作域名 <input name="domain" type="text">  「如 oiox.cn」<br><br>
+        </div>
+        <div>
+            * 记录ID <input name="record_id" type="text">  「先使用查询功能查询到record_id」<br><br>
+        </div>
+        <div>
+            <button type="submit" value="提交">提交</button>
+        </div>
+    </form>
+
+</body>    
+</html>
